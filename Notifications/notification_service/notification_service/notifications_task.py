@@ -10,9 +10,6 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import config as config
 
-
-sg = SendGridAPIClient('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')
-
 def send_notification(email, subject, message_html):
     message = Mail(
         from_email='notifications@aplusocean.com',

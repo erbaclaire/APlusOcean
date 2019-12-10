@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A+Ocean</title>
+<!--  <link rel=StyleSheet href={% static "aplusocean/register_css.css" %} title="register_css">-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head>
+<body>
+{% for a in account %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="../">A+Ocean</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../../items/?account_id={{ a.pk }}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../carts?account_id={{ a.pk }}">Cart</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../accounts/?account_id={{ a.pk }}">My Account</a>
+              <a class="dropdown-item" href="../../support/?account_id={{ a.pk }}">Support</a>
+              <a class="dropdown-item" href="../../">Log Out</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" action="/search/results/?account_id={{ account_id }}" method="get">
+      <select class="form-control mr-sm-2" id="category" name="category">
+          <option value="1">Category</option>
+          {% for category in categories %}
+            <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+          {% endfor %}    
+      </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="item_desc" id="item_desc">
+      <input class="form-control mr-sm-2" type="hidden" value="{{ a.pk }}" name="account_id" id="account_id">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> 
+    </form>
+  </nav>
+
+  <div style="text-align: center; margin-top: 50px">
+   <div class="card" style="width: 24rem; margin: 20px; display:inline-block">
+     <div class="card-body">
+       <form id="updateAccount" action="/accounts/updates/" method="post">
+        <input type="hidden" class="form-control" name="account_id" aria-describedby="emailHelp" value="{{ a.pk }}" required>
+         <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" class="form-control" name="fname" aria-describedby="emailHelp" value="{{ a.fields.first_name }}" required>
+        </div>
+         <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" class="form-control" name="lname" aria-describedby="emailHelp" value="{{ a.fields.last_name }}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="text" class="form-control" name="email" aria-describedby="emailHelp" value="{{ a.fields.email }}" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" value="{{ a.fields.password }}" required>
+        </div>
+         <div class="form-group">
+          <label for="password_repeat">Re-Enter Password</label>
+          <input type="password" class="form-control" name="password_repeat" value="{{ a.fields.password }}" required><br/><br/>
+        <p><b>Update Default Payment and Shipping</b></p>
+         <div class="form-group">
+          <label for="credit_card">Credit Card Number</label>
+          <input type="text" class="form-control" name="credit_card" value="{{ a.fields.credit_number }}" required>
+        </div>
+         <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" class="form-control" name="cvv" value="{{ a.fields.credit_cvv }}" required>
+        </div>
+         <div class="form-group">
+          <label for="exdate">Expiration Date</label>
+          <input type="text" class="form-control" name="exdate" value="{{ a.fields.exdate }}" required>
+        </div>
+         <div class="form-group">
+          <label for="adr">Address</label>
+          <input type="text" class="form-control" name="adr" value="{{ a.fields.address_street }}" required>
+        </div>
+         <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" value="{{ a.fields.address_city }}" required>
+        </div>
+         <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" name="state" value="{{ a.fields.address_state }}" required>
+        </div>
+         <div class="form-group">
+          <label for="zip">Zip Code</label>
+          <input type="text" class="form-control" name="zip" value="{{ a.fields.address_zip }}" required>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Account</button>
+      </form>
+     </div>
+   </div>
+  </div>
+  {% endfor %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

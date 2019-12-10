@@ -1,0 +1,5 @@
+Django>=2.0,<3.0
+django-cors-headers
+pika==1.0.0
+pyyaml==5.1.2
+sendgrid==6.1.0

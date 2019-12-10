@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A+Ocean</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="../">A+Ocean</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="../../items/?account_id={{ admin_account_id }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../carts/?account_id={{ admin_account_id }}">Cart</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../../accounts/?account_id={{ admin_account_id }}">My Account</a>
+            <a class="dropdown-item" href="../../support/?account_id={{ admin_account_id }}">Support</a>
+            <a class="dropdown-item" href="../../">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </form>
+    <form class="form-inline my-2 my-lg-0" action="../../search/results/?account_id={{ admin_account_id }}" method="get">
+      <select class="form-control mr-sm-2" id="category" name="category">
+          <option value="1">Category</option>
+          {% for category in categories %}
+            <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+          {% endfor %}    
+      </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="item_desc" id="item_desc">
+      <input class="form-control mr-sm-2" type="hidden" value="{{ admin_account_id }}" name="account_id" id="account_id">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> 
+    </form>
+  </div>
+</nav>
+
+  <div style="text-align: center; margin-top: 20px">
+    <h1>User Support Messages</h1>
+  </div>
+  <div style="margin: 50px">
+      {% for message in messages %}
+      <div class="list-group">
+          <a href="/support/admin/response/?message={{message.message_id}}&admin_account_id={{admin_account_id}}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ message.email}}</h5>
+              <small>{{ message.date }}</small>
+            </div>
+            <p class="mb-1">{{ message.message }}</p>
+          </a>
+      </div>
+      {% endfor %}
+  </div>
+
+  <hr>
+  <div style="text-align: center; margin-top: 20px">
+    <h1>Flagged Items</h1>
+  </div>
+  <div style="margin: 50px">
+    <div style="display: flex; flex-wrap: wrap;">
+      {% for item in flagged_items %}
+        {% if item.fields.sold == False %}
+         <div class="card" style="width: 18rem; margin: 20px;">
+            <form id="flagItem" action="../../items/updates/?admin_account_id={{ admin_account_id }}" method="post">
+              <img src="../../static/{{ item.fields.item_pic }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><b>{{ item.fields.item_name }}</b></h5>
+                <p class="card-text">{{ item.fields.item_desc }}</p>
+                <p class="card-text"><b>Start Price:</b> $ {{ item.fields.start_price }}</p>
+                {% for bid in bids %}
+                  {% if bid.fields.item_id == item.pk%}
+                    <p class="card-text"><b>Current Highest Bid:</b> $ {{ bid.fields.bid_amount }}</p>
+                  {% endif %}
+                {% endfor %}
+                <p class="card-text"><b>Shipping Cost:</b> $ {{ item.fields.shipping_cost }}</p>
+                <p class="card-text"><b>Qty:</b> {{ item.fields.quantity }}</p>
+                <p class="card-text"><b>Auction Start Time:</b> {{ item.fields.auction_start_time }}</p>
+                <p class="card-text"><b>Auction End Time:</b> {{ item.fields.auction_end_time }}</p>
+                <input type="hidden" name="item_id" id="item_id" value="{{ item.pk }}" required><br/>
+                <button type="submit" name="admin_delete_item" class="btn btn-outline-primary">Delete Item</button>
+                {% if item.fields.auction_live_now == True %}
+                  <button type="submit" name="admin_stop_auction" class="btn btn-outline-primary">Stop Auction</button>
+                {% endif %}
+              </div>
+            </form>
+          </div>  
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  
+  <hr>
+  <div style="text-align: center; margin: 50px">
+    <h1>Categories</h1>
+     <div class="form-group" style="width: 20rem; margin: 20px; display:inline-block">
+      <form id="deleteCategory" action="/admin/add_delete_update_category/?admin_account_id={{ admin_account_id }}" method="post">
+        <input type="text" class="form-control" id="category" name="category" placeholder="Add category"><br/>
+        <button type="submit" name="admin_add" class="btn btn-outline-primary">Add Category</button>
+      </form>
+    </div>
+  </div>
+  <div style="text-align: center; margin: 50px">
+    <div class="list_group">
+      {% for category in categories %}
+        <div class="form-group" style="width: 20rem; margin: 20px; display:inline-block">
+          <form id="deleteCategory" action="/admin/add_delete_update_category/?admin_account_id={{ admin_account_id }}" method="post">
+            <h2 class="card-text">{{ category.fields.category }}</h2>
+            <input type="text" class="form-control" id="category" name="category" placeholder="Modify {{ category.fields.category }} Category"><br/>
+            <button type="submit" name="admin_delete" class="btn btn-outline-primary">Delete {{ category.fields.category }} Category</button>
+            <button type="submit" name="admin_update" class="btn btn-outline-primary">Modify {{ category.fields.category }} Category</button>
+            <input type="hidden" name="category_id" id="category_id" value="{{ category.pk }}" required><br/>
+          </form><br/>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <hr>
+  <div style="text-align: center; margin-top: 20px">
+      <h1>Users</h1>
+      {% for account in accounts %}
+       <form id="blockUser" action="\support\admin\?admin_account_id={{ admin_account_id }}" method="post">
+        {% if account.fields.is_blocked == False %}
+          <p><b>{{ account.fields.first_name }} {{ account.fields.last_name }}</b> ({{ account.fields.email }} - Rating: {{ account.fields.seller_rating }}/5 Stars)</p>
+          {% if account.pk not in has_outstanding_cart and account.pk not in any_items_have_bids and account.pk not in has_highest_bid %}
+            <input type="hidden" name="account_id" id="account_id" value="{{ account.pk }}" required>
+            <button type="submit" name="block_user" class="btn btn-outline-primary">Block User</button><button type="submit" name="remove_user" class="btn btn-outline-primary">Remove User</button>
+          {% else %}
+            <p> User cannot be blocked or deleted at this time because they either have items in their cart, their items in another's cart, they have active bids, or they have auctions opens with active bids </p>
+          {% endif %}
+        {% endif %}
+        {% if account.fields.is_blocked == True %}
+          <p><b>{{ account.fields.first_name }} {{ account.fields.last_name }}</b> ({{ account.fields.email }} - Rating: {{ account.fields.seller_rating }}/5 Stars)</p>
+          <input type="hidden" name="account_id" id="account_id" value="{{ account.pk }}" required>
+          <button type="submit" name="un_block_user" class="btn btn-outline-primary">Un-Block User</button>
+        {% endif %}
+        </form>
+        <br/>
+      {% endfor %}
+   </div>
+
+  <hr>
+  <div style="text-align: center; margin-top: 20px">
+    <h1>Current Auctions</h1>
+  </div>
+  <div style="margin: 50px">
+    <div style="display: flex; flex-wrap: wrap;">
+      {% for item in items %}
+        {% if item.fields.auction_live_now == True %}
+         <div class="card" style="width: 18rem; margin: 20px;">
+            <form id="flagItem" action="../../items/updates/?admin_account_id={{ admin_account_id }}" method="post">
+              <img src="../../static/{{ item.pk}}.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><b>{{ item.fields.item_name }}</b></h5>
+                <p class="card-text">{{ item.fields.item_desc }}</p>
+                <p class="card-text"><b>Price:</b> $ {{ item.fields.start_price }}</p>
+                {% for bid in bids %}
+                  {% if bid.fields.item_id == item.pk%}
+                    <p class="card-text"><b>Current Highest Bid:</b> $ {{ bid.fields.bid_amount }}</p>
+                  {% endif %}
+                {% endfor %}
+                <p class="card-text"><b>Shipping Cost:</b> $ {{ item.fields.shipping_cost }}</p>
+                <p class="card-text"><b>Qty:</b> {{ item.fields.quantity }}</p>
+                <p class="card-text"><b>Auction Start Time:</b> {{ item.fields.auction_start_time }}</p>
+                <p class="card-text"><b>Auction End Time:</b> {{ item.fields.auction_end_time }}</p>
+                <p class="card-text"><b>Auction Ends In:</b> {{ item.fields.auction_end_time|timeuntil:today }} </p>
+                <input type="hidden" name="item_id" id="item_id" value="{{ item.pk }}" required><br/>
+                <button type="submit" name="admin_stop_auction" class="btn btn-outline-primary">Stop Auction</button>
+              </div>
+            </form>
+          </div>  
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <hr>
+  <div style="text-align: center; margin-top: 20px">
+    <h1>Closed Auction Metrics</h1>
+    <h2><u>Highest Bid</u></h2><br/>
+    <p><b>Last 24 Hours:</b> ${{ highest.last_24_hours }}</p>
+    <p><b>Last Week:</b> ${{ highest.last_week }}</p>
+    <p><b>Last Month:</b> ${{ highest.last_month }}</p>
+    <p><b>Last Year:</b> ${{ highest.last_year }}</p>
+    <h2><u>Average Bid</u></h2><br/>
+    <p><b>Last 24 Hours:</b> ${{ avg.last_24_hours }}</p>
+    <p><b>Last Week:</b> ${{ avg.last_week }}</p>
+    <p><b>Last Month:</b> ${{ avg.last_month }}</p>
+    <p><b>Last Year:</b> ${{ avg.last_year }}</p>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

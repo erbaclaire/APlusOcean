@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>A+Ocean</title>
+  </head>
+
+  <body>
+    {% for a in account %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../">A+Ocean</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../items/?account_id={{ a.pk }}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../carts/?account_id={{ a.pk }}">Cart</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../../accounts/?account_id={{ a.pk }}">My Account</a>
+                <a class="dropdown-item" href="../../support/?account_id={{ a.pk }}">Support</a>
+              <a class="dropdown-item" href="../../">Log Out</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/search/results/?account_id={{ a.pk }}" method="get">
+          <select class="form-control mr-sm-2" id="category" name="category">
+              <option value="1">Category</option>
+              {% for category in categories %}
+                <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+              {% endfor %}
+          </select>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="item_desc" id="item_desc">
+          <input class="form-control mr-sm-2" type="hidden" value="{{ a.pk}}" name="account_id" id="account_id">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div>
+        {% if a.fields.is_blocked == True %}
+          <h1 style="margin: 20px; color: red;">Hello, {{ a.fields.first_name }} {{ a.fields.last_name }}. Your account has been blocked. Please contact support for any questions. </h1>
+          <a style="margin: 20px;" href="../accounts/delete/?account_id={{ a.pk }}" class="btn btn-outline-primary">Delete Account</a>
+        {% endif %}
+        {% if a.fields.is_blocked == False and a.fields.is_active == False %}
+          <h1 style="margin: 20px;">Hello, {{ a.fields.first_name }} {{ a.fields.last_name }}!</h1> <br/><br/> <h2 style="margin: 20px;">You account is currently suspended. If you wish to un-suspend please click the button below.</h2>
+          <a style="margin: 20px;" href="../accounts/un_suspend/?account_id={{ a.pk }}" class="btn btn-outline-primary">Un-Suspend Account</a>
+          <a style="margin: 20px;" href="../accounts/delete/?account_id={{ a.pk }}" class="btn btn-outline-primary">Delete Account</a>
+        {% endif %}
+        {% if a.fields.is_admin == True %}
+          <a style="margin: 20px;" href="../support/admin/?admin_account_id={{ a.pk }}" class="btn btn-outline-primary">Admin Functionality</a>
+        {% endif %}
+        {% if a.fields.is_active == True and a.fields.is_blocked == False %}
+          <h1 style="margin: 20px;">Hello, {{ a.fields.first_name }} {{ a.fields.last_name }}!</h1>
+          <a style="margin-left: 20px" href="../accounts/updates/?account_id={{ a.pk }}" class="btn btn-primary">Update Profile</a><br/><br/>
+            {%  if not has_outstanding_cart and not any_items_have_bid and not has_highest_bid %}
+              <a style="margin-left: 20px" href="../accounts/suspend/?account_id={{ a.pk }}" class="btn btn-primary">Suspend Account</a><br/><br/>
+              <a style="margin-left: 20px" href="../accounts/delete/?account_id={{ a.pk }}" class="btn btn-primary">Delete Account</a><br/><br/>
+            {%  else %}
+                <h5 style="margin-left: 20px">Your account cannot be deleted or suspended while you have 1) active cart items not checked out, 2) active bids placed, 3) active auctions with bids, or 4) your items in other user's carts. Your ability to suspend or delete your account will return when the above are resolved.</h5><br/>
+            {% endif %}
+          <h3 style="margin-left: 20px">Your Items</h3>
+          <a style="margin-left: 20px" href="../items/new/?account_id={{ a.pk }}" class="btn btn-primary">Add New Item</a>
+          <div class="scrolling-wrapper" style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+          {% for item in items %}
+              {% if item.fields.account_id == a.pk %}
+              <div class="card" style="width: 18rem; margin: 20px; flex: 0 0 auto;">
+                <img src="../../static/{{ item.fields.item_pic }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><b>{{ item.fields.item_name }}</b></h5>
+      	          <p class="card-text">{{ item.fields.item_desc }}</p>
+                  <p class="card-text"><b>Status: </b>{% if item.fields.auction_live_now == True %}Item in an auction.{% endif %}{% if item.fields.in_cart == True %}Item is in someone's cart!{% endif %}{% if item.fields.sold == True %}Sold!{% endif %}{% if item.fields.auctions_live_now == False and item.fields.admin_stopped_auction == False and item.fields.in_cart == False and item.fields.sold == False %}Ready to sell!{% endif %}</p>
+                  {% if item.fields.flagged == True %}
+                    <p class="card-text" style="color: red; "><b>Your item has been flagged! Admins may remove this item and/or stop any active auction. </b></p>
+                  {% endif %}
+                  {% if item.fields.admin_stopped_auction == True %}
+                    <p class="card-text" style="color: red; "><b>An admin has stopped your auction. All bids on the item have been removed. Please contact us for support if you believe this was unfair. </b></p>
+                  {% endif %}
+      	          {% if item.fields.has_bids == False and item.fields.in_cart == False and item.fields.sold == False and item.fields.admin_stopped_auction == False%}
+                  	<a href="../items/updates/?account_id={{ a.pk }}&item={{ item.pk }}" class="btn btn-outline-primary">Update Item</a>
+                  {% endif %}
+                  {% if item.fields.in_cart == False and item.fields.sold == False and item.fields.admin_stopped_auction == True %}
+                    <form name="edit_item_submit" id="edit_item_submit" action="/items/updates/?account_id={{ a.pk }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" value={{item.pk}} name=item_id required>
+                      <button type="submit" name="delete" class="btn btn-outline-primary">Delete Item</button>
+                    </form>
+                  {% endif %}
+      	         </div>
+              </div>
+              {% endif %}
+          {% endfor %}
+          </div><br/>
+
+          <h3 style="margin-left: 20px">My Active Bids</h3>
+          <div class="scrolling-wrapper" style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+            {% for bid in bids %}
+              {% for item in items %}
+                {% if bid.fields.item_id == item.pk and bid.fields.most_current_bid == True and item.fields.auction_live_now == True %}
+                  <div class="card" style="width: 18rem; margin: 20px; flex: 0 0 auto;">
+                    <div class="card-body">
+                      <h5 class="card-title"><b>{{ item.fields.item_name }}</b></h5>
+                      <p class="card-text"><b>My Bid:</b> ${{ bid.fields.bid_amount }}</p>
+                      <p class="card-text"><b>Am I the Highest Bidder?:</b> {{ bid.fields.highest_bid }}</p>
+                      <a style="margin-left: 50px" href="../../auctions/details/?item={{ item.pk }}&account_id={{ bid.fields.buyer_account_id }}" name="go_to_auction" class="btn btn-outline-primary" class="btn btn-primary">Go to Auction</a>
+                    </div>
+                  </div>
+                {% endif%}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+        <br/>
+
+          <h3 style="margin-left: 20px">My Watchlist</h3>
+          <div class="scrolling-wrapper" style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+          <div style="text-align: center; margin: 50px">
+             <div class="form-group" style="width: 20rem; margin: 20px; display:inline-block">
+              <form id="addToWatchlist" action="../accounts/watchlist_add/?account_id={{ a.pk }}" method="post">
+                <input type="text" class="form-control" id="desired_item" name="desired_item" placeholder="Desired item description"><br/>
+                <input type="number" class="form-control" id="desired_price" name="desired_price" placeholder="Desired price"><br/>
+                <button type="submit" name="admin_add" class="btn btn-outline-primary">Add Watchlist Item</button>
+              </form>
+            </div>
+          </div>
+            {% for item in watchlist_items %}
+            <div class="card" style="width: 18rem; height: 10rem; margin: 20px; flex: 0 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title"><b>Desired Item:</b> {{ item.fields.desired_item }}</h5>
+                <h5 class="card-text"><b>Desired Price:</b> ${{ item.fields.desired_price }}</h5>
+                  <form id="removeWatchlist" action="../accounts/watchlist_remove/" method="post">
+                      <input class="form-control mr-sm-2" type="hidden" value="{{ a.pk }}" name="account_id" id="account_id">
+                      <input class="form-control mr-sm-2" type="hidden" value="{{ item.pk }}" name="pk" id="pk">
+                    <button type="submit" name="watchlist_remove" class="btn btn-outline-primary">Remove</button>
+              </form>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+      {% endfor %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

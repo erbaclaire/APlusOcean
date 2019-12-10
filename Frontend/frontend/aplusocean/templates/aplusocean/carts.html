@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>A+Ocean</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../">A+Ocean</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../items/?account_id={{ account_id }}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./?account_id={{ account_id }}">Cart</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../accounts/?account_id={{ account_id }}">My Account</a>
+              <a class="dropdown-item" href="../support/?account_id={{ account_id }}">Support</a>
+              <a class="dropdown-item" href="../">Log Out</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/search/results/?account_id={{ account_id }}" method="get">
+          <select class="form-control mr-sm-2" id="category" name="category">
+              <option value="1">Category</option>
+              {% for category in categories %}
+                <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+              {% endfor %}    
+          </select>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="item_desc" id="item_desc">
+          <input class="form-control mr-sm-2" type="hidden" value="{{ account_id }}" name="account_id" id="account_id">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> 
+        </form>
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <h1 class="display-4">Cart Items</h1>
+      <hr class="my-2">
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+      {% for item in items %}
+        {% for cart_item in cart_items %}
+          {% if item.pk == cart_item.fields.item_id and cart_item.fields.checked_out == False %}
+        	  <div class="card" style="width: 18rem; margin: 20px;">
+              <p style="float:right; font-size: small;">
+              <img src="../../static/{{ item.fields.item_pic }}" class="card-img-top" alt="...">
+              <div class="card-body">
+  	            <h5 class="card-title"><b>{{ item.fields.item_name }}</b></h5>
+                <p class="card-text">{{ item.fields.item_desc }}</p>
+                <p class="card-text"><b>Price:</b> $ {{ cart_item.fields.price }}</p>
+                <p class="card-text"><b>Qty:</b> {{ item.fields.quantity }}</p>
+                <a href="../checkout/?cart_item_id={{ cart_item.pk }}&item_id={{ item.pk }}&account_id={{ account_id }}&price={{cart_item.fields.price}}" class="btn btn-primary">Checkout</a>
+              </div>
+  	        </div>
+	         {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

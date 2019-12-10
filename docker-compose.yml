@@ -1,0 +1,180 @@
+version: '3'
+
+services:
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit"
+    ports:
+      - "15672:15672"
+      - "5673:5673"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+
+  items_db:
+    image: postgres
+  items_service:
+    build: ./Items/items_service
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - ./Items/items_service/:/items_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - items_db
+
+  notifications_db:
+    image: postgres
+  notifications_service:
+    build: ./Notifications/notification_service
+    command: python manage.py runserver 0.0.0.0:8081
+    volumes:
+      - ./Notifications/notification_service/:/notifications_service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - notifications_db
+
+  carts_db:
+    image: postgres
+  carts_service:
+    build: ./Carts/carts_service
+    command: python manage.py runserver 0.0.0.0:8082
+    volumes:
+      - ./Carts/carts_service/:/carts_service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - carts_db
+
+  accounts_db:
+    image: postgres
+  accounts_service:
+    build: ./Accounts/accounts_service
+    command: python manage.py runserver 0.0.0.0:8083
+    volumes:
+      - ./Accounts/accounts_service/:/accounts_service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - accounts_db
+
+  bidsdb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: bidsdb
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - "27017:27017"
+
+#   volumes:
+#     - ./init-db:/docker-entrypoint-initdb.d
+#      - ./data-db:/data/db
+
+    command:
+      mongod
+
+
+  auctions_service:
+    build: ./Auctions/auctions_service
+    command: python manage.py runserver 0.0.0.0:8084
+    volumes:
+      - ./Auctions/auctions_service/:/auctions_service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - bidsdb
+
+
+
+
+
+
+#
+# items:
+#   build: ./Items/items_service
+#   command: python manage.py runserver 0.0.0.0:8080
+#   volumes:
+#     - .:/code
+#   ports:
+#     - "8080:8080"
+# db:
+#   image: "postgres"
+#   container_name: "my_postgres"
+#   environment:
+#     - POSTGRES_USER=john
+#     - POSTGRES_PASSWORD=pwd0123456789
+#     - POSTGRES_DB=mydb
+#   ports:
+#     - "54320:5432"
+#   volumes:
+#     - ./postgres-data:/var/lib/postgresql/data
+#
+# auctions:
+#   build: ./Auctions/auctions_service
+#   command: python manage.py runserver 0.0.0.0:8084
+#   volumes:
+#     - .:/code
+#   ports:
+#     - "8084:8084"
+# db:
+#   image: 'mongo'
+#   container_name: 'my_mongo_container'
+#   environment:
+#   MONGO_INITDB_DATABASE=auctionDB
+#   MONGO_INITDB_ROOT_USERNAME=
+#   MONGO_INITDB_ROOT_PASSWORD=
+#   volumes:
+#   - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+#   - ./mongo-volume:/data/db
+#   ports:
+#   - '27017-27019:'
+# carts:
+#   build: ./Carts/carts_service
+#   command: python manage.py runserver 0.0.0.0:8082
+#   volumes:
+#     - .:/code
+#   ports:
+#     - "8082:8082"
+# db:
+#   image: "postgres"
+#   container_name: "my_postgres"
+#   environment:
+#     - POSTGRES_USER=john
+#     - POSTGRES_PASSWORD=pwd0123456789
+#     - POSTGRES_DB=mydb
+#   ports:
+#     - "54320:5432"
+#   volumes:
+#     - ./postgres-data:/var/lib/postgresql/data
+#
+# notification:
+#   build: ./Notifications/notification_service
+#   command: python manage.py runserver 0.0.0.0:8081
+#   volumes:
+#     - .:/code
+#   ports:
+#     - "8081:8081"
+# db:
+#   image: "postgres"
+#   container_name: "my_postgres"
+#   environment:
+#     - POSTGRES_USER=john
+#     - POSTGRES_PASSWORD=pwd0123456789
+#     - POSTGRES_DB=mydb
+#   ports:
+#     - "54320:5432"
+#   volumes:
+#     - ./postgres-data:/var/lib/postgresql/data
+
+# frontend:
+#   build: ./Frontend/frontend
+#   command: python manage.py runserver 0.0.0.0:8000
+#   volumes:
+#     - .:/code
+#   ports:
+#     - "8001:8000"

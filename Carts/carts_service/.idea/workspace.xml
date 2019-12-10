@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="512e80c4-4df4-474f-93fc-504a0fc535fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika-1.0.0.dist-info/zip-safe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/asyncio_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/base_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/blocking_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/select_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/tornado_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/twisted_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/utils/connection_workflow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/utils/io_services_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/utils/nbio_interface.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/adapters/utils/selector_ioloop_adapter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/amqp_object.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/callback.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/channel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/compat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/credentials.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/diagnostic_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/frame.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/heartbeat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/spec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/tcp_socket_opts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/pika/validators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/DESCRIPTION.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.0.0.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/DESCRIPTION.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.0.0.dist-info/top_level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Accounts/accounts_service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Accounts/accounts_service/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client-3.2.1.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/VERSION.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/python_http_client/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid-6.1.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/VERSION.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/VERSION.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/default_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/default_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/raw_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/raw_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/raw_data_with_attachments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/inbound/sample_data/raw_data_with_attachments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/email.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/footer_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/footer_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/ganalytics.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/ganalytics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/open_tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/open_tracking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/subscription_tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/helpers/mail/subscription_tracking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/sendgrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/sendgrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/sendgrid/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/tests/profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/tests/test_daterange.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/tests/test_repofiles.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/venv/lib/python3.7/site-packages/tests/test_unit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1T7EC97fH6Gv17TPeRbiJX8NXBX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="carts_service" type="Python.DjangoServer" factoryName="Django server">
+      <module name="carts_service" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="carts_service.settings" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8082" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="512e80c4-4df4-474f-93fc-504a0fc535fe" name="Default Changelist" comment="" />
+      <created>1572802603766</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572802603766</updated>
+      <workItem from="1572802604937" duration="108000" />
+      <workItem from="1574006540111" duration="943000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

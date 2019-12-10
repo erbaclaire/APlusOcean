@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A+Ocean</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="../">A+Ocean</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="../../items/?account_id={{ account_id }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../carts/?account_id={{ account_id }}">Cart</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../../accounts/?account_id={{ account_id }}">My Account</a>
+            <a class="dropdown-item" href="../../support/?account_id={{ account_id }}">Support</a>
+            <a class="dropdown-item" href="../../">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" action="/search/results/?account_id={{ account_id }}" method="get">
+      <select class="form-control mr-sm-2" id="category" name="category">
+          <option value="1">Category</option>
+          {% for category in categories %}
+            <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+          {% endfor %}    
+      </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Items" aria-label="Search" name="item_desc" id="item_desc">
+      <input class="form-control mr-sm-2" type="hidden" value="{{ account_id }}" name="account_id" id="account_id">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> 
+    </form>
+  </nav>
+  <div style="text-align: center; margin-top: 50px">
+   <h1>Add an Item</h1>
+   <div class="card" style="width: 40rem; margin: 20px; display:inline-block">
+     <div class="card-body">
+       <form name="itemAdd" id="itemAdd" action="/items/new/?account_id={{account_id}}" method="post" enctype="multipart/form-data">
+         <div class="form-group">
+          <label for="item_name">Item Name</label>
+          <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item name" required>
+        </div>
+        <div class="form-group">
+            <label for="item_pic">Item Image</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="item_pic" name="item_pic" required>
+                <label class="custom-file-label" for="item_pic">Choose file</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category">
+                <option value="">Select a category</option>
+                {% for category in categories %}
+                  <option value="{{ category.pk }}">{{ category.fields.category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <div class="form-group">
+          <input type="text" class="form-control" id="category2" name="category2" placeholder="Or make your own category">
+        </div>
+         <div class="form-group">
+          <label for="item_desc">Description</label>
+          <textarea class="form-control" id="item_desc" name="item_desc" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" required>
+        </div>
+         <div class="form-group">
+          <label for="start_price">Starting Price</label>
+          <input type="number" step="0.01" class="form-control" id="start_price" name="start_price" placeholder="Starting price" required>
+        </div>
+         <div class="form-group">
+          <label for="shipping_cost">Shipping Cost</label>
+          <input type="number" step="0.01" class="form-control" id="shipping_cost" name="shipping_cost" placeholder="Shipping cost" required>
+        </div>        
+        <div class="form-group">
+          <label for="auction_start_time">Auction Start Time</label>
+          <div class='input-group date' id='datetimepicker1'>
+            <input type='text' class="form-control" id="auction_start_time" name="auction_start_time" placeholder="Auction start time"/>
+            <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+  		  </div>
+  		</div>
+          <div class="form-group">
+            <label for="auction_end_time">Auction End Time</label>
+            <div class='input-group date' id='datetimepicker2'>
+              <input type='text' class="form-control" id="auction_end_time" name="auction_end_time" placeholder="Auction end time"/>
+              <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+    		  </div>
+  		</div>    
+         <div class="form-group">
+          <label for="auction_end_notif_time">End of Auction Notification Time (Minutes)</label>
+          <input type="number" class="form-control" id="auction_end_notif_time" name="auction_end_notif_time" placeholder="End of auction notification time (minutes)">
+        </div>  
+        <div class="form-group">
+            <label for="buy_now">Buy Now</label>
+            <select class="form-control" id="buy_now" name="buy_now" required>
+                <option value="False">False</option>
+                <option value="True">True</option>
+            </select>
+        </div> 
+          <div class="form-group">
+            <label for="buy_now_price">Buy Now Price</label>
+            <input type="number" class="form-control" id="buy_now_price" name="buy_now_price" value="{{ item.fields.buy_now_price }}">
+          </div>  
+        <button type="button" value="Submit" class="btn btn-primary" onclick="validateAndSend()">Add Item</button>
+      </form>
+     </div>
+   </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+	<script>
+	{#})#}
+        $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+	</script>
+	<script>
+	{#});#}
+        $(function () {
+                $('#datetimepicker2').datetimepicker();
+            });
+	</script>
+    <script>
+        $('.custom-file-input').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    </script>
+    <script>
+        function validateAndSend() {
+            if (itemAdd.category.value == '' && itemAdd.category2.value == '') {
+                alert('Select a category or create a new one');
+                return false;
+            }
+            else {
+                itemAdd.submit();
+            }
+        }
+    </script>
+
+</body>
+</html>

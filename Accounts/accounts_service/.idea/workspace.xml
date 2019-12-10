@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7b2809c8-02b4-40d8-a052-d63b07f8812b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts_service/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts_service/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/notification_service/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/notification_service/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Notifications/notification_service/notification_service/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Notifications/notification_service/notification_service/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../postgres-data/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../../postgres-data/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../postgres-data/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../../postgres-data/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../postgres-data/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../../postgres-data/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../postgres-data/postmaster.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../../postgres-data/postmaster.pid" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1TUaIfODhGUQLimYkjUTSSOOnGj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Notifications/notification_service" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="accounts_service" type="Python.DjangoServer" factoryName="Django server">
+      <module name="accounts_service" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="accounts_service.settings" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8083" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b2809c8-02b4-40d8-a052-d63b07f8812b" name="Default Changelist" comment="" />
+      <created>1573517049471</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573517049471</updated>
+      <workItem from="1573517050660" duration="50000" />
+      <workItem from="1573601642086" duration="481000" />
+      <workItem from="1574006514296" duration="1379000" />
+      <workItem from="1574016517781" duration="3914000" />
+      <workItem from="1574173352146" duration="308000" />
+      <workItem from="1574174917269" duration="52000" />
+      <workItem from="1574179176263" duration="545000" />
+      <workItem from="1574180081375" duration="147000" />
+      <workItem from="1574180238937" duration="88000" />
+      <workItem from="1574618037347" duration="2000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

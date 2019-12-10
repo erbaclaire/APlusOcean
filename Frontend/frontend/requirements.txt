@@ -1,0 +1,4 @@
+requests
+Django>=2.0,<3.0
+django-cors-headers
+schedule==0.6.0

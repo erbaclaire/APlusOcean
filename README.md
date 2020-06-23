@@ -9,6 +9,8 @@ There are 5 microservices - Accounts, Auctions, Carts, Items, and Notifications.
 ## Lessons Learned
 The project gave me a foundational understanding of microservices - how monolithic applications are unstable because if one element goes down then the entire app goes down. The microservice structure allows for compartmentalization of tasks so that if something fails the app as a whole can still partially function. Additionally, this allowes for partial deployments. This project was my first exposure to Docker, as well. I learned how Docker containers make it easy to put out new features quickly, they often save costs and time because of shared OS, and how they are lightweight and portable because they have only what the app component needs and nothing more. Finally, this app gave me exposure to asynchronous communication with RabbitMQ, where a service sends a message and that message gets put in to a queue and is addressed as soon as it can be but in the meantime the app continues to function. Previously I had only known about synchronous applications. 
 
+Used Agile environment to complete the project with my group. Made use of Trello.
+
 Below is how to run the application. One notices that it is a very manual process to start up the application. Towards the end of this project we were on a time crunch so that we could only partially automate the startup process with a Docker compose file. The next step for this project, therefore, is to encapsulate the below commands in a Docker compose file and deploy the app to a web server.
 
 ## How to Run the Application
